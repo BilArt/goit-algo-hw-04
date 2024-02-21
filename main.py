@@ -35,3 +35,19 @@ def insertion_sort(arr):
             j -= 1
         arr[j + 1] = key
     return arr
+
+# Генерація тестових даних
+test_data = [random.randint(0, 1000) for _ in range(1000)]
+
+# Вимірювання часу сортування методом злиття
+merge_sort_time = timeit.timeit(lambda: merge_sort(test_data.copy()), number = 1)
+
+# Вимірювання часу сортування методом вставки
+insertion_sort_time = timeit.timeit(lambda: insertion_sort(test_data.copy()), number = 1)
+
+# Вимірювання часу сортування Timsort
+timsort_time = timeit.timeit(lambda: sorted(test_data.copy()), number = 1)
+
+print(f"Час сортування методом злиття: {merge_sort_time} секунд")
+print(f"Час сортування методом вставки: {insertion_sort_time} секунд")
+print(f"Час сортування Timsort: {timsort_time} секунд")
